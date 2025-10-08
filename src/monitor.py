@@ -53,13 +53,15 @@ def main():
     alerts = check_thresholds(metrics)
 
     if alerts:
-
-	for a in alerts:
-		logging.warning(a)
-		print(f"WARNUNG:\n{a}")
+        print("WARNUNG:")
+        for a in alerts:
+            logging.warning(a)
+            print(f"- {a}")
     else:
         print("Alles gut Dolbobob.")
-	logging.info("Alles im grünen Bereich.")
+        logging.info("Alles im grünen Bereich.")
+
+
 
 if __name__ == "__main__":
     main()
