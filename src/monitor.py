@@ -21,13 +21,7 @@ def get_system_metrics():
     disk = psutil.disk_usage('/')
     process_count = len(psutil.pids())
 
-    return {
-        "cpu": cpu_usage,
-        "memory": memory.percent,
-        "disk": disk.percent,
-        "processes": process_count
-    }
-
+    return cpu_usage, memory, disk, process_count
 
 # check whether the system values ​​exceed limits
 def check_thresholds(metrics):
