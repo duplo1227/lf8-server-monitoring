@@ -1,4 +1,5 @@
 import psutil
+import time
 import logging
 from datetime import datetime
 
@@ -63,5 +64,5 @@ if __name__ == "__main__":
     while True:
         print(f"Server Monitoring gestartet ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
         main()
-        time.sleep(30)
+        time.sleep(CHECK_INTERVAL)
 
