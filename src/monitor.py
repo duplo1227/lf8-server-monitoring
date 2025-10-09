@@ -43,9 +43,7 @@ def check_thresholds(metrics):
 
 # main function
 def main():
-    print(f"Server Monitoring gestartet ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
     logging.info(f"Server Monitoring gestartet ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
-
     metrics = get_system_metrics()
     print(f"CPU: {metrics['cpu']}%, RAM: {metrics['memory']}%, Disk: {metrics['disk']}%, Prozesse: {metrics['processes']}")
     logging.info(f"CPU: {metrics['cpu']}%, RAM: {metrics['memory']}%, Disk: {metrics['disk']}%, Prozesse: {metrics['processes']}")
@@ -64,4 +62,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    while True:
+	print(f"Server Monitoring gestartet ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
+        main()
+        time.sleep(30)
