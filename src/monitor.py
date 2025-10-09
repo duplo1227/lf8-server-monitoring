@@ -59,10 +59,9 @@ def main():
         print("Alles gut Dolbobob.")
         logging.info("Alles im grünen Bereich.")
 
-
-
 if __name__ == "__main__":
     while True:
-	print(f"Server Monitoring gestartet ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
+        print(f"Server Monitoring gestartet ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
         main()
         time.sleep(30)
+
