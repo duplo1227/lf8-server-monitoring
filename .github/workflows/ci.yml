@@ -35,8 +35,8 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd ~/server-monitoring-pipeline || git clone git@github.com:duplo1227/server-monitoring-pipeline.git
-            cd server-monitoring-pipeline
+            cd /home/deploy_user/ || git clone https://github.com/duplo1227/lf8-server-monitoring.git
+            cd lf8-server-monitoring
             git pull origin main
             pip install -r requirements.txt
-            nohup python3 src/monitor.py > logger.log 2>&1 &
+            python3 src/monitor.py
