@@ -10,4 +10,4 @@ def test_metrics_return_values():
     assert 0 <= cpu <= 100
     assert 0 <= mem <= 100
     assert 0 <= disk <= 100
-    assert 0 <= proc <= 200
+    assert 0 <= proc <= 190
