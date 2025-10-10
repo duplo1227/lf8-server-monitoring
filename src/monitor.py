@@ -17,33 +17,33 @@ logging.basicConfig(
 # track CPU, RAM, disk usage and processes.
 def get_system_metrics():
     cpu_usage = psutil.cpu_percent(interval=1)
-    memory = psutil.virtual_memory()
-    disk = psutil.disk_usage('/')
+    memory = psutil.virtual_memory().percent
+    disk = psutil.disk_usage('/').percent
     process_count = len(psutil.pids())
 
     return cpu_usage, memory, disk, process_count
 
 # check whether the system values ​​exceed limits
-def check_thresholds(metrics):
+def check_thresholds(cpu, memory, disk):
     alerts = []
 
-    if metrics["cpu"] > CPU_THRESHOLD:
-        alerts.append(f"!!! Hohe CPU-Auslastung: {metrics['cpu']}%")
-    if metrics["memory"] > MEMORY_THRESHOLD:
-        alerts.append(f"!!! Hoher Speicherverbrauch: {metrics['memory']}%")
-    if metrics["disk"] > DISK_THRESHOLD:
-        alerts.append(f"!!! Wenig Speicherplatz: {metrics['disk']}% belegt")
+    if cpu > CPU_THRESHOLD:
+        alerts.append(f"!!! Hohe CPU-Auslastung: {cpu}%")
+    if memory > MEMORY_THRESHOLD:
+        alerts.append(f"!!! Hoher Speicherverbrauch: {memory}%")
+    if disk > DISK_THRESHOLD:
+        alerts.append(f"!!! Wenig Speicherplatz: {disk}% belegt")
 
     return alerts
 
 # main function
 def main():
     logging.info(f"Server Monitoring gestartet ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
-    metrics = get_system_metrics()
-    print(f"CPU: {metrics['cpu']}%, RAM: {metrics['memory']}%, Disk: {metrics['disk']}%, Prozesse: {metrics['processes']}")
-    logging.info(f"CPU: {metrics['cpu']}%, RAM: {metrics['memory']}%, Disk: {metrics['disk']}%, Prozesse: {metrics['processes']}")
+    cpu, memory, disk, processes = get_system_metrics()
+    print(f"CPU: {cpu}%, RAM: {memory}%, Disk: {disk}%, Prozesse: {processes}")
+    logging.info(f"CPU: {cpu}%, RAM: {memory}%, Disk: {disk}%, Prozesse: {processes}")
 
-    alerts = check_thresholds(metrics)
+    alerts = check_thresholds(cpu, memory, disk)
 
     if alerts:
         print("WARNUNG:")
@@ -51,7 +51,7 @@ def main():
             logging.warning(a)
             print(f"- {a}")
     else:
-        print("Alles gut Dolbobob.")
+        print("Alles im grünen Bereich.")
         logging.info("Alles im grünen Bereich.")
 
 if __name__ == "__main__":
