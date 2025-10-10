@@ -7,6 +7,7 @@ CPU_THRESHOLD = 30
 MEMORY_THRESHOLD = 30 
 DISK_THRESHOLD = 30
 CHECK_INTERVAL = 30 
+a = 5
 
 logging.basicConfig(
     filename="/opt/monitoring/lf8-server-monitoring/logger.log",
@@ -55,7 +56,8 @@ def main():
         logging.info("Alles im grünen Bereich.")
 
 if __name__ == "__main__":
-    while True:
+    while a > 0:
+	a--
         print(f"Server Monitoring gestartet ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
         main()
         time.sleep(CHECK_INTERVAL)
