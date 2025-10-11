@@ -57,9 +57,9 @@ def main():
 
 if __name__ == "__main__":
     while a > 0:
-    	a -= 1
-    	print(f"Server Monitoring gestartet ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
-    	main()
-    	time.sleep(CHECK_INTERVAL)
+        a -= 1
+        print(f"Server Monitoring gestartet ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
+        main()
+        time.sleep(CHECK_INTERVAL)
 
 
