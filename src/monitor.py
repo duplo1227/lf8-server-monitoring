@@ -7,7 +7,7 @@ CPU_THRESHOLD = 30
 MEMORY_THRESHOLD = 30 
 DISK_THRESHOLD = 30
 CHECK_INTERVAL = 30 
-a = 5
+a = 4
 
 logging.basicConfig(
     filename="/opt/monitoring/lf8-server-monitoring/logger.log",
