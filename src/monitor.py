@@ -8,7 +8,7 @@ import psutil
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from . import alarm
+from src import alarm
 
 def read_config(path: str):
     cfg = configparser.ConfigParser()
