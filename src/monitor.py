@@ -8,7 +8,7 @@ import psutil
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from src.alarm import *
+from . import alarm
 
 def read_config(path: str):
     cfg = configparser.ConfigParser()
@@ -38,7 +38,7 @@ def main():
     scfg = cfg["smtp"]
 
     # Logging initialisieren
-    alarm.setup_logging(mcfg.get("log_file", "monitor.log"))
+    alarm.setup_logging(mcfg.get("log_file", "logger.log"))
 
     interval = int(mcfg.get("interval_seconds", 30))
 
