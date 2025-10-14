@@ -39,4 +39,4 @@ jobs:
             cd lf8-server-monitoring
             git pull origin main
             pip install -r requirements.txt
-            python3 src/monitor.py
+            python3 src/monitor.py --config /home/deploy_user/lf8-server-monitoring/src/config.ini
