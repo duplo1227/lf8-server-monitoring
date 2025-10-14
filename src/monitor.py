@@ -1,10 +1,14 @@
+# import sys
+# import os
 import argparse
 import configparser
 from datetime import datetime
 import time
 import psutil
 
-from src.alarm import *
+# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from alarm import *
 
 def read_config(path: str):
     cfg = configparser.ConfigParser()
