@@ -11,8 +11,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src import alarm
 
-a = 4
-
 def read_config(path: str):
     cfg = configparser.ConfigParser()
     cfg.read(path, encoding="utf-8")
@@ -53,6 +51,7 @@ def main():
         "processes": (float(lcfg.get("processes_soft", 180)), float(lcfg.get("processes_hard", 250))),
     }
 
+    a = 4
     while a > 0:
         a -= 1
         data = get_metrics()
