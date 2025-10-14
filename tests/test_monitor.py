@@ -3,7 +3,7 @@ import os
 import psutil
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from src.alarm import .
+from src.alarm import *
 from src.monitor import get_metrics
 
 def test_metrics_return_values():
