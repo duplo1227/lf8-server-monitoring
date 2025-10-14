@@ -54,30 +54,31 @@ def main():
     }
 
     while a > 0:
-	a -= 1
-        data = get_metrics()
-        # Kurzer Konsolen-Output + Logging der Benutzer
-        print(
-            f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] "
-            f"CPU: {data['cpu']}%, RAM: {data['memory']}%, Disk: {data['disk']}%, "
-            f"Prozesse: {data['processes']}, Benutzer: {len(data['users'])} {data['users']}"
-        )
+    a -= 1
+    data = get_metrics()
+    # Kurzer Konsolen-Output + Logging der Benutzer
+    print(
+        f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] "
+        f"CPU: {data['cpu']}%, RAM: {data['memory']}%, Disk: {data['disk']}%, "
+        f"Prozesse: {data['processes']}, Benutzer: {len(data['users'])} {data['users']}"
+    )
 
-        # Benutzer separat ins Log (Muss-Kriterium)
-        if data["users"]:
-            user_line = f"Aktive Benutzer: {len(data['users'])} [{', '.join(data['users'])}]"
-        else:
-            user_line = "Aktive Benutzer: 0 [-]"
-        # Direkt das Logging aus alarm-Modul nutzen
-        alarm.logging.info(user_line)
+    # Benutzer separat ins Log (Muss-Kriterium)
+    if data["users"]:
+        user_line = f"Aktive Benutzer: {len(data['users'])} [{', '.join(data['users'])}]"
+    else:
+        user_line = "Aktive Benutzer: 0 [-]"
+    # Direkt das Logging aus alarm-Modul nutzen
+    alarm.logging.info(user_line)
 
-        # Werte prüfen (Soft/Hard) – Prozesse ohne Einheit
-        alarm.check_and_alert("cpu", data["cpu"], *limits["cpu"], smtp_cfg=scfg, unit="%")
-        alarm.check_and_alert("memory", data["memory"], *limits["memory"], smtp_cfg=scfg, unit="%")
-        alarm.check_and_alert("disk", data["disk"], *limits["disk"], smtp_cfg=scfg, unit="%")
-        alarm.check_and_alert("processes", data["processes"], *limits["processes"], smtp_cfg=scfg, unit="")
+    # Werte prüfen (Soft/Hard) – Prozesse ohne Einheit
+    alarm.check_and_alert("cpu", data["cpu"], *limits["cpu"], smtp_cfg=scfg, unit="%")
+    alarm.check_and_alert("memory", data["memory"], *limits["memory"], smtp_cfg=scfg, unit="%")
+    alarm.check_and_alert("disk", data["disk"], *limits["disk"], smtp_cfg=scfg, unit="%")
+    alarm.check_and_alert("processes", data["processes"], *limits["processes"], smtp_cfg=scfg, unit="")
 
-        time.sleep(interval)
+    time.sleep(interval)
+
 
 if __name__ == "__main__":
     main()
