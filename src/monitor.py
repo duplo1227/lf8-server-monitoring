@@ -4,7 +4,7 @@ from datetime import datetime
 import time
 import psutil
 
-from src.alarm import .
+from src.alarm import *
 
 def read_config(path: str):
     cfg = configparser.ConfigParser()
