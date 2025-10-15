@@ -9,6 +9,7 @@ import psutil
 # Add parent directory to the import path so we can import local modules
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+
 from src import alarm
 
 # Read configuration values from the config.ini file
