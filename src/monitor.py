@@ -11,7 +11,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src import alarm
 
-
 # Read configuration values from the config.ini file
 def read_config(path: str):
     cfg = configparser.ConfigParser()
